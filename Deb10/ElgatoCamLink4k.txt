@@ -1,0 +1,47 @@
+## Prerequisites
+
+# install required tools
+apt install v4l-utils v4l2loopback-utils
+apt install -t bullseye v4l2loopback-dkms
+
+# install OBS
+sudo apt install obs-studio
+
+# prepare libs for plugin
+sudo apt install libobs-dev libobs0
+cd /usr/lib/x86_64-linux-gnu/obs-plugins
+sudo ln -s ../../obs-plugins/v4l2sink.so
+
+# install OBS studio plugin "obs-v4l2sink"
+apt install qtbase5-dev
+git clone --recursive https://github.com/obsproject/obs-studio.git
+git clone https://github.com/CatxFish/obs-v4l2sink.git
+cd obs-v4l2sink
+mkdir build && cd build
+cmake -DLIBOBS_INCLUDE_DIR="../../obs-studio/libobs" -DCMAKE_INSTALL_PREFIX=/usr ..
+make -j4
+sudo make install
+
+
+## Usage
+
+# check usb speed > 3.0
+lsusb -vvv | grep -A10 Elgato
+
+# check for existing video devices
+ls -l /dev/video*
+
+# check for details of video device
+sudo v4l2-ctl --device=/dev/video1 --all
+
+# add virtual cam
+sudo modprobe v4l2loopback video_nr=9 card_label=VirtualCam exclusive_caps=1,1,1,1,1,1,1,1
+
+# remove virtual cam
+sudo modprobe -r v4l2loopback
+
+
+## Additional
+
+# install 
+sudo apt install Webcamoid
