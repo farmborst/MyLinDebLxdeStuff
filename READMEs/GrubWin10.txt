@@ -1,0 +1,7 @@
+# disable os-prober add the following line to /etc/default/gru
+GRUB_DISABLE_OS_PROBER=true
+# check/create win10 entry
+vi /etc/grub.d/40_custom
+# update grub.cfg and grub
+grub-mkconfig -o /boot/grub/grub.cfg
+update-grub
