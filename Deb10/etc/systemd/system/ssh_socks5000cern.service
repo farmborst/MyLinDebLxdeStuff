@@ -1,0 +1,13 @@
+[Unit]
+Description=SSH Tunnel
+After=network.target
+
+[Service]
+Restart=always
+RestartSec=5s
+User=farmbors
+ExecStart=/usr/bin/ssh -o "ServerAliveCountMax 1" -o "ServerAliveInterval 20" -ND 5000 farmbors@lxplus.cern.ch
+StartLimitInterval=0
+
+[Install]
+WantedBy=multi-user.target
