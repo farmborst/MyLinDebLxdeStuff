@@ -40,6 +40,9 @@ sudo modprobe v4l2loopback video_nr=2 card_label=VirtualCam exclusive_caps=1,1,1
 # remove virtual cam
 sudo modprobe -r v4l2loopback
 
+# add v4l2loopback to modules loaded at boot
+vi /etc/modules
+sudo update-initramfs -c -k $(uname -r)
 
 ## Additional
 
