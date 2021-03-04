@@ -1,0 +1,35 @@
+## OPTIONALLY INSTALL NEWEST KERNEL FIRST
+# update
+apt-get update
+
+# check installed kernel(s)
+apt-cache policy linux-image-amd64
+dpkg --list | grep linux-image
+
+# check in use kernel = older (also after reboot usually)
+uname -r
+
+# install new kernel
+apt-get install -t buster-backports linux-image-amd64
+
+# add new kernel to grub menu
+grub-mkconfig -o /boot/grub/grub.cfg
+update-grub
+
+# reboot and check kernel version
+reboot
+uname -r
+
+## INSTALL NEWEST NVIDIA DRIVER (DOWNLOAD FROM NVIDIA.COM)
+# reboot without x
+reboot
+# enter edit mode in grub using "e" and append "1" to linux load line and go with ctrl-x
+# or ctrl-alt-f1 and "systemctl stop lightdm.service"
+
+# install newest nvidia driver
+sh NVIDIA-Linux-x86_64-xxx.xx.xx.run
+
+# reboot and check nvidia version
+reboot
+nvidia-smi
+

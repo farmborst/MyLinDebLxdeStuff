@@ -1,0 +1,24 @@
+boinccmd --acct_mgr attach http://bam.boincstats.com/ 240178_8ce1cdd41e5e2cdbe44bb91c84ce3e88 ""
+boinccmd --project_attach https://lhcathome.cern.ch/lhcathome/ 787007_50848a671af442179ccb8fe125af4060
+boinccmd --project_attach https://boinc.bakerlab.org/rosetta/ 2347116_0f8c5e85e3b2799a678d825728976fdf
+boinccmd --acct_mgr sync
+boinccmd --get_messages
+boinccmd --get_state
+
+
+# change data dir
+1. Stop the boinc client
+ >> systemctl stop boinc-client
+2. Move the existing data to the new location a
+ >> mv /var/lib/boinc-client/* /home/data/boinc-client/
+3. mount new location at old point
+ >> mount --bind /home/data/boinc-client /var/lib/boinc-client 
+4. Check COrrect Ownership
+ >> chown boinc:boinc /var/lib/boinc* -R
+5. ReStart the boinc client 
+ >> systemctl start boinc-client
+ >> systemctl status boinc-client
+6. Make bind permanent by adding "/home/data/boinc-client/ /var/lib/boinc-client none bind 0 0" to fstab
+ >> vi /etc/fstab
+
+(6.) Edit the /etc/default/boinc-client file for more options
