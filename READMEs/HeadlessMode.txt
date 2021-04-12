@@ -1,0 +1,5 @@
+# enable "headless" mode
+systemctl set-default multi-user.target
+
+# enable desktop mode
+systemctl set-default graphical.target

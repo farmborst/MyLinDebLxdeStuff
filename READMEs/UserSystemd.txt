@@ -1,0 +1,7 @@
+# put user level .service and .timer files in
+  ~/.config/systemd/user
+
+# enable, start and check status of user service
+  systemctl --user enable psi_socks6000.service 
+  systemctl --user start psi_socks6000.service 
+  systemctl --user status psi_socks6000.service 

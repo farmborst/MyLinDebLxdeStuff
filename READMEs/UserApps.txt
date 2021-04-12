@@ -1,0 +1,11 @@
+# location for .desktop files
+  ~/.local/share/applications
+# location for .directory files
+  ~/.local/share/desktop-directories
+# location for .menu files
+  ~/.config/menus/applications-merged
+
+# add user applications to specific directory
+  xdg-desktop-menu install /home/inp/.local/share/desktop-directories/psi-all.directory /home/inp/.local/share/applications/psi-*
+# check updated .menu file
+  cat ~/.config/menus/applications-merged/???.menu
