@@ -1,0 +1,6 @@
+[Desktop Entry] 
+
+Type=Application
+
+Exec=nvidia-settings --assign CurrentMetaMode="3840x2160_60 +0+0 {ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}"
+#Exec=nvidia-settings --assign CurrentMetaMode="1920x1080_60 +0+0 {ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}"
